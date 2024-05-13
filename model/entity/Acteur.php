@@ -49,6 +49,7 @@ class Offre
 
     /**
      * Set the value of nom
+     * commentaire 
      *
      */ 
     public function setNom($nom)
