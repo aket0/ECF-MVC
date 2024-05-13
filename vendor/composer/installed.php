@@ -3,7 +3,11 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
         'reference' => '141c6775ef987af11ea44c70b52159432c53246c',
+=======
+        'reference' => 'f2ea44041770fbb87906194692c8bb7f3d282ba2',
+>>>>>>> 30831324a45ad93d5ddad021822f4fe295456f4f
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,16 +17,20 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => '141c6775ef987af11ea44c70b52159432c53246c',
+=======
+            'reference' => 'f2ea44041770fbb87906194692c8bb7f3d282ba2',
+>>>>>>> 30831324a45ad93d5ddad021822f4fe295456f4f
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(
-            'pretty_version' => 'v3.4.0',
-            'version' => '3.4.0.0',
-            'reference' => '7c3aff79d10325257a001fcf92d991f24fc967cf',
+            'pretty_version' => 'v3.5.0',
+            'version' => '3.5.0.0',
+            'reference' => '0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/deprecation-contracts',
             'aliases' => array(),
@@ -56,9 +64,9 @@
             'dev_requirement' => false,
         ),
         'twig/twig' => array(
-            'pretty_version' => 'v3.9.3',
-            'version' => '3.9.3.0',
-            'reference' => 'a842d75fed59cdbcbd3a3ad7fb9eb768fc350d58',
+            'pretty_version' => 'v3.10.1',
+            'version' => '3.10.1.0',
+            'reference' => '3af5ab2e52279e5e23dc192b1a26db3b8cffa4e7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../twig/twig',
             'aliases' => array(),
