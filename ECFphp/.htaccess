@@ -1,3 +1,0 @@
-RewriteEngine on
-RewriteRule ^([a-z,A-Z,_]+)$  index.php?action=$1  
-RewriteRule ^([a-z,A-Z,_]+)&([0-9]+)$  index.php?action=$1&id=$2  [L]
