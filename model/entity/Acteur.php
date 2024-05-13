@@ -6,7 +6,7 @@ namespace Model\entity;
  * Description de Acteur
  *
  */
-class Offre
+class Acteur
 {
     private $id;
     private $nom;
