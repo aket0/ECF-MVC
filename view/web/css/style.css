@@ -1,8 +1,21 @@
 body {
-   color: rgb(226, 226, 240);
-   background-color: black;
+   color: rgb(233, 233, 239);
+   /* background-color: rgb(243, 237, 237); */
    font-family: 'Ubuntu', sans-serif;
    margin: 0px;
+}
+
+.navbar-brand {
+
+   color: white;
+}
+
+.navbar {
+   background-color: #343A40;
+}
+
+.nav-link {
+   color: rgb(134, 131, 125);
 }
 
 header,
