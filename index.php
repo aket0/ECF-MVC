@@ -20,9 +20,8 @@ require './controller/header.php';
 $routes = [
     '/' => './controller/home.php',
     'home' => './controller/home.php',
-    'creer' => './controller/creer.php',
-    'delete' => './controller/delete.php',
-    'update' => './controller/update.php',
+    'login' => './controller/login.php',
+
 ];
 
 $controller = isset($_GET['action']) ?  $_GET['action'] : '/';
