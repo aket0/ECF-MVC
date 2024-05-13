@@ -52,8 +52,8 @@ class ActeurDAO extends Dao
     //Modifier un acteur
     public static function updateOne($data): bool
     {
-        $requete = 'UPDATE acteur set title=:title, description=:description WHERE id=:id';
-        $valeurs = ['id' => $data->getId(), 'title' => $data->getTitle(), 'description' => $data->getDescription()];
+        $requete = 'UPDATE acteur set nom=:nom, prenom=:prenom WHERE id=:id';
+        $valeurs = ['id' => $data->getId(), 'nom' => $data->getnom(), 'prenom' => $data->getprenom()];
         $query = self::$bdd->prepare($requete);
         $query->execute($valeurs);
         return $query->rowCount() == 1 ? true : false;
