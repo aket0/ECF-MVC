@@ -8,7 +8,7 @@ use Model\repository\Dao;
 class OffreDAO extends Dao
 {
 
-    //Récupérer toutes les offres
+    
     public static function getAll(): array
     {
 

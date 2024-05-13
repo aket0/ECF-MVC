@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Déchargement des données de la table `acteur`
 --
 
-INSERT INTO `acteur` (`id`, `nom`, `prenom`) VALUES
+INSERT INTO `Acteur` (`id`, `nom`, `prenom`) VALUES
 (1, 'Allen', 'Alfie'),
 (2, 'Brando', 'Marlon'),
 (3, 'Brasseur', 'Claude'),
