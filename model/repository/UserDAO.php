@@ -3,44 +3,60 @@
 namespace Model\repository;
 
 use Model\entity\User;
-use Model\repository\Dao;
+use PDO;
+use PDOException;
 
 class UserDAO extends Dao
 {
-
-    //Récupérer tous les User
+    // Récupérer tous les utilisateurs
     public static function getAll(): array
     {
-
         $query = self::$bdd->prepare("SELECT id, username, email, password FROM User");
         $query->execute();
-        $user = array();
+        $users = [];
 
         while ($data = $query->fetch()) {
-            $user[] = new User($data['id'], $data['username'], $data['email'],$data['password']);
+            $users[] = new User($data['id'], $data['username'], $data['email'], $data['password']);
         }
-        return ($user);
+        return $users;
     }
 
-    //Ajouter un User
-    public static function addOne($data): bool
+    // Ajouter un utilisateur
+    public static function addOne(User $user): bool
     {
-
-        $requete = 'INSERT INTO User (username, email, password) VALUES (:username , :email, :password)';
-        $valeurs = ['username' => $data->getUsername(), 'email' => $data->getEmail(), 'password' => $data->getPassword()];
-        $insert = self::$bdd->prepare($requete);
-        return $insert->execute($valeurs);
+        $query = 'INSERT INTO User (username, email, password) VALUES (:username, :email, :password)';
+        $values = [
+            'username' => $user->getUsername(),
+            'email' => $user->getEmail(),
+            'password' => password_hash($user->getPassword(), PASSWORD_DEFAULT)
+        ];
+        $insert = self::$bdd->prepare($query);
+        return $insert->execute($values);
     }
 
-    //Récupérer plus d'info sur 1 User,
-    public static function getOne(int $id): User
+    // Récupérer un utilisateur par ID
+    public static function getOne(int $id): ?User
     {
-        $query = self::$bdd->prepare('SELECT * FROM user WHERE id = :id_user');
-        $query->execute(array(':id_user' => $id));
+        $query = self::$bdd->prepare('SELECT * FROM User WHERE id = :id');
+        $query->execute([':id' => $id]);
         $data = $query->fetch();
-        return new user($data['id'], $data['username'], $data['email']);
+
+        if ($data) {
+            return new User($data['id'], $data['username'], $data['email'], $data['password']);
+        }
+        return null;
     }
 
-   
-    
+    // Récupérer un utilisateur par email
+    public static function getByEmail(string $email): ?User
+    {
+        $query = self::$bdd->prepare('SELECT * FROM User WHERE email = :email');
+        $query->execute([':email' => $email]);
+        $data = $query->fetch();
+
+        if ($data) {
+            return new User($data['id'], $data['username'], $data['email'], $data['password']);
+        }
+        return null;
+    }
 }
