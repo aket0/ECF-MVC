@@ -22,7 +22,7 @@ class UserDAO extends Dao
     }
 
     // Ajouter un utilisateur
-    public static function addOne(User $user): bool
+    public static function addOne(object $user): bool
     {
         $query = 'INSERT INTO User (username, email, password) VALUES (:username, :email, :password)';
         $values = [
@@ -40,12 +40,13 @@ class UserDAO extends Dao
         $query = self::$bdd->prepare('SELECT * FROM User WHERE id = :id');
         $query->execute([':id' => $id]);
         $data = $query->fetch();
-
+    
         if ($data) {
             return new User($data['id'], $data['username'], $data['email'], $data['password']);
         }
         return null;
     }
+    
 
     // Récupérer un utilisateur par email
     public static function getByEmail(string $email): ?User
@@ -58,5 +59,24 @@ class UserDAO extends Dao
             return new User($data['id'], $data['username'], $data['email'], $data['password']);
         }
         return null;
+    }
+    public static function deleteOne(int $id): bool
+    {
+        $query = self::$bdd->prepare('DELETE FROM User WHERE id = :id');
+        return $query->execute([':id' => $id]);
+    }
+
+    // Modifier un utilisateur
+    public static function updateOne(object $data): bool
+    {
+        $query = 'UPDATE User SET username = :username, email = :email, password = :password WHERE id = :id';
+        $values = [
+            'id' => $data->getId(),
+            'username' => $data->getUsername(),
+            'email' => $data->getEmail(),
+            'password' => $data->getPassword()
+        ];
+        $update = self::$bdd->prepare($query);
+        return $update->execute($values);
     }
 }

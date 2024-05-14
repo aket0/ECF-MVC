@@ -17,7 +17,7 @@ class User
         $this->setPassword($password);
     }
 
-    public function setID($id)
+    public function setId($id)
     {
         $this->id = $id;
         return $this;
@@ -55,7 +55,7 @@ class User
     {
      return $this->email;   
     }
-    
+
     public function getPassword()
     {
      return $this->password;   
