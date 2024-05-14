@@ -1,0 +1,31 @@
+<div>
+{# <p> je suis la page de recherche</p> #}
+
+
+{% if films is defined %}
+    <p>{{message}}</p>
+
+    {% for film in films %}
+		<div>
+			
+					<label for="title">
+						<b>{{film.getTitre}}
+							:
+						</b>
+					</label>
+					<label for="description">
+						<b>{{film.getRealisateur}}</b>
+					</label>
+					<input value="{{film.getId}}" name="id" type="hidden">
+
+		
+		</div>
+	{% endfor %}
+     
+
+{% else %}
+    
+    <p>{{message}}</p>
+
+{% endif %}
+</div>

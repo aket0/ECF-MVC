@@ -1,11 +1,57 @@
-body {
-   color: rgb(226, 226, 240);
-   background-color: black;
-   font-family: 'Ubuntu', sans-serif;
-   margin: 0px;
+:root {
+   --bg-body: #000000;
+   --bg-button: #129612;
+   --bg-header: #E6DEDE;
+   --bg-nav: rgb(134, 131, 125);
 }
 
-header,
+body {
+   color: rgb(233, 233, 239);
+   /* background-color: rgb(243, 237, 237); */
+   font-family: 'Ubuntu', sans-serif;
+   width: 100%;
+
+}
+
+.navbar-brand {
+   color: white !important;
+}
+
+
+header {
+   padding-left: 10px;
+   width: 100%;
+   margin-bottom: 20px;
+
+}
+
+.navbar {
+   background-color: #3e4246 !important;
+   padding: 10px;
+   box-shadow: 10px 5px 5px rgb(117, 115, 115);
+   width: 100%;
+
+}
+
+.nav-link {
+   color: white !important;
+}
+
+.log {
+   margin-left: 20px;
+   color: blue;
+}
+
+button {
+   color: white !important;
+   background-color: darkgrey;
+}
+
+li {
+   color: white;
+}
+
+
 footer {
    width: 100%;
    margin-bottom: 20px;
