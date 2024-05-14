@@ -1,22 +1,20 @@
 <div>
 	{% for offre in offres %}
 		<div>
-			<form method="post">
-				<div class="container">
-					<input value="delete" formaction="delete" type="submit">
-					<input value="update" formaction="update" type="submit">
+			
+				
+					
 					<label for="title">
-						<b>{{offre.getTitle}}
+						<b>{{offre.getTitre}}
 							:
 						</b>
 					</label>
 					<label for="description">
-						<b>{{offre.getDescription}}</b>
+						<b>{{offre.getRealisateur}}</b>
 					</label>
 					<input value="{{offre.getId}}" name="id" type="hidden">
 
-				</div>
-			</form>
+		
 		</div>
 	{% endfor %}
 </div>

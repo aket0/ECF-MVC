@@ -21,6 +21,7 @@ $routes = [
     '/' => './controller/home.php',
     'home' => './controller/home.php',
     'login' => './controller/login.php',
+    'recherche' => './controller/recherche.php',
    
 ];
 

@@ -60,6 +60,23 @@ class FilmDAO extends Dao
         return $query->rowCount() == 1 ? true : false;
     }
 
+    
+    //Rechercher un film par titre
+    public static function searchOne(string $titre) : array
+    {
+        $query = self::$bdd->prepare('SELECT * FROM Film WHERE titre LIKE :titre');
+        $query->execute(array(':titre' => '%'.$titre.'%'));
+        $films = array();
+        if($query->rowCount() != 0){
+            while ($data = $query->fetch()) {
+            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+            }
+        }
+       
+        return ($films);
+
+    }
+
     //Ajouter un role
     public static function addOneRole($data): bool
     {
