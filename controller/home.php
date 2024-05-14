@@ -1,14 +1,21 @@
-<?php
+<div>
+	{% for film in films %}
+		<div>
+			<form method="post">
+				<div class="container">
+					
+					<label for="title">
+						<b>{{film.getTitre}}
+						{{film.getRealisateur}}
+						<img src="{{film.getAffiche}}" alt="">
+						{{film.getAnnee}}
+						</b>
+					</label>
+					
+					<input value="{{film.getId}}" name="id" type="hidden">
 
-use Model\repository\FilmDAO;
-
-//On appelle la fonction getAll()
-$filmDao = new FilmDAO();
-
-$films = $filmDao->getAll();
-
-unset($_SESSION['user']);
-// $_SESSION['user'] = 'vince@afpa.com';
-
-//On affiche le template Twig correspondant
-echo $twig->render('home.html.twig', ['films' => $films]);
+				</div>
+			</form>
+		</div>
+	{% endfor %}
+</div>
