@@ -27,7 +27,7 @@ class UserDAO extends Dao
             throw new \InvalidArgumentException('Expected instance of User');
         }
 
-        $requette = 'INSERT INTO user (username, email, mdp) VALUES (:username, :email, :mdp)';
+        $requette = 'INSERT INTO user (username, email, password) VALUES (:username, :email, :mdp)';
         $values = [
             'username' => $data->getUsername(),
             'email' => $data->getEmail(),
