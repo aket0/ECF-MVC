@@ -1,18 +1,18 @@
 <div>
-	{% for offre in offres %}
+	{% for film in films %}
 		<div>
 			
 				
 					
 					<label for="title">
-						<b>{{offre.getTitre}}
+						<b>{{film.getTitre}}
 							:
 						</b>
 					</label>
 					<label for="description">
-						<b>{{offre.getRealisateur}}</b>
+						<b>{{film.getRealisateur}}</b>
 					</label>
-					<input value="{{offre.getId}}" name="id" type="hidden">
+					<input value="{{film.getId}}" name="id" type="hidden">
 
 		
 		</div>
