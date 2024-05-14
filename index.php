@@ -21,8 +21,10 @@ $routes = [
     '/' => './controller/home.php',
     'home' => './controller/home.php',
     'login' => './controller/login.php',
+
     'recherche' => './controller/recherche.php',
    
+
 ];
 
 $controller = isset($_GET['action']) ?  $_GET['action'] : '/';
