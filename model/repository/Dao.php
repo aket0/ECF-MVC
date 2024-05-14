@@ -9,30 +9,29 @@ abstract class Dao
     protected static $bdd = null;
 
     public function __construct()
-
     {
-        // Connexion Database
+        // Connexion à la base de données
         try {
             self::$bdd = SPDO::getInstance();
             self::$bdd->query("SET NAMES UTF8");
         } catch (\Exception $e) {
-            echo "Problème de connexion à la base de donnée ...";
+            echo "Problème de connexion à la base de données ...";
             die();
         }
     }
 
-    //Récupérer toutes les items
+    // Récupérer tous les éléments
     abstract public static function getAll(): array;
 
-    //Récupérer plus d'info sur 1 item à l'aide de son id
-    abstract public static function getOne(int $id): Object;
+    // Récupérer plus d'informations sur un élément à l'aide de son ID
+    abstract public static function getOne(int $id): ?object;
 
-    //Ajouter un item
-    abstract public static function addOne(Object $data): bool;
+    // Ajouter un élément
+    abstract public static function addOne(object $data): bool;
 
-    //Supprimer un item
+    // Supprimer un élément
     abstract public static function deleteOne(int $id): bool;
 
-    //Modifier un item
-    abstract public static function updateOne(Object $data): bool;
+    // Modifier un élément
+    abstract public static function updateOne(object $data): bool;
 }
