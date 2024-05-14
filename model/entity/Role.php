@@ -2,6 +2,9 @@
 
 namespace Model\entity;
 
+use Model\entity\Film;
+use Model\entity\Acteur;
+
 /**
  * Description of Role
  *
@@ -9,18 +12,19 @@ namespace Model\entity;
 class Role
 {
 
-
     private $id;
     private $personnage;
+    private $acteur;
+    private $film;
 
 
-    public function __construct($id, $personnage)
+    public function __construct($id, $personnage, Acteur $acteur, Film $film)
     {
-
         $this->setId($id);
         $this->setPersonnage($personnage);
+        $this->setActeur($acteur);
+        $this->setFilm($film);
     }
-
 
 
     /**
@@ -59,6 +63,46 @@ class Role
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of acteur
+     */
+    public function getActeur()
+    {
+        return $this->acteur;
+    }
+
+    /**
+     * Set the value of acteur
+     *
+     * @return  self
+     */
+    public function setActeur($acteur)
+    {
+        $this->acteur = $acteur;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of film
+     */
+    public function getFilm()
+    {
+        return $this->film;
+    }
+
+    /**
+     * Set the value of film
+     *
+     * @return  self
+     */
+    public function setFilm($film)
+    {
+        $this->film = $film;
 
         return $this;
     }
