@@ -55,7 +55,7 @@ INSERT INTO `Acteur` (`id`, `nom`, `prenom`) VALUES
 -- Déchargement des données de la table `film`
 --
 
-INSERT INTO `film` (`id`, `titre`, `realisateur`, `affiche`, `annee`) VALUES
+INSERT INTO `Film` (`id`, `titre`, `realisateur`, `affiche`, `annee`) VALUES
 (1, 'Matrix', 'Les Wachowski', 'http://fr.web.img6.acsta.net/r_1920_1080/medias/04/34/49/043449_af.jpg', 1999),
 (2, 'La soupe aux choux', 'Jean Girault', 'http://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/36/11/21/18478117.jpg', 1981),
 (3, 'John Wick', 'David Leitch', 'http://fr.web.img4.acsta.net/pictures/14/10/08/11/49/255061.jpg', 2014),
@@ -73,7 +73,7 @@ INSERT INTO `film` (`id`, `titre`, `realisateur`, `affiche`, `annee`) VALUES
 -- Déchargement des données de la table `role`
 --
 
-INSERT INTO `role` (`id`, `id_film`, `id_acteur`, `personnage`) VALUES
+INSERT INTO `Role` (`id`, `id_film`, `id_acteur`, `personnage`) VALUES
 (32, 4, 2, 'Vito Corleone'),
 (26, 5, 3, 'Joseph Fouché'),
 (21, 4, 4, 'Vito Corleone'),
