@@ -17,7 +17,7 @@ class Role
     private $personnage;
 
 
-    public function __construct(int $id_Acteur, int $id_Film, int $id, string $personnage)
+    public function __construct(int $id_Acteur, int $id_Film, ?int $id, string $personnage)
     {
         $this->setID_Acteur($id_Acteur);
         $this->setID_Film($id_Film);

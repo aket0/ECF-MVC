@@ -1,6 +1,7 @@
 <?php
 
 namespace Model\entity;
+use Model\entity\Role;
 
 /**
  * Description of Film
@@ -14,9 +15,10 @@ class Film
     private $realisateur;
     private $affiche;
     private $annee;
+    private $role;
 
 
-    public function __construct(int $id, string $titre, string $realisateur, string $affiche, string $annee)
+    public function __construct(?int $id, string $titre, string $realisateur, string $affiche, string $annee, Role $role = null)
 
     {
         $this->setId($id);
@@ -24,6 +26,7 @@ class Film
         $this->setRealisateur($realisateur);
         $this->setAffiche($affiche);
         $this->setAnnee($annee);
+        $this->setRole($role);
     }
 
 
@@ -124,6 +127,26 @@ class Film
     public function setAnnee($annee)
     {
         $this->annee = $annee;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of role
+     */ 
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set the value of role
+     *
+     * @return  self
+     */ 
+    public function setRole($role)
+    {
+        $this->role = $role;
 
         return $this;
     }

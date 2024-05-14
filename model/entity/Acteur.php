@@ -12,7 +12,7 @@ class Acteur
     private $nom;
     private $prenom;
 
-    public function __construct( int $id,  string $nom, string $prenom)
+    public function __construct(int $id, string $nom, string $prenom)
     {
         $this->setId($id);
         $this->setNom($nom);

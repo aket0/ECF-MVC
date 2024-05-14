@@ -13,12 +13,18 @@ class FilmDAO extends Dao
     public static function getAll(): array
     {
 
-        $query = self::$bdd->prepare("SELECT * FROM Film");
+        $query = self::$bdd->prepare("SELECT *
+        FROM (role INNER JOIN film ON role.id_film = film.id)
+        INNER JOIN acteur ON role.id_acteur = acteur.id");
         $query->execute();
         $films = array();
-
+        
         while ($data = $query->fetch()) {
-            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+            $role = array();
+            $role = FilmDAO::getRole($data['id']);
+            var_dump($role);
+            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $role);
+            
         }
         return ($films);
     }
@@ -68,6 +74,20 @@ class FilmDAO extends Dao
         $insert = self::$bdd->prepare($requete);
         return $insert->execute($valeurs);
     }
+
+    public static function getRole(int $id_film): array
+    { 
+        $query = self::$bdd->prepare('SELECT * FROM (role INNER JOIN film ON role.id_film = film.id) INNER JOIN acteur ON role.id_acteur = acteur.id where id_film=:id');
+        $query->execute(array(':id' => $id_film));
+        $role = array();
+
+        while ($data = $query->fetch()) {
+            $role[] = new Role($data['id_Acteur'], $data['id_Film'], $data['id'], $data['personnage']);
+        }
+        return ($role);
+
+    }
+
     // //Verification de Role
     // public static function getRole($personnage): Role
     // {
