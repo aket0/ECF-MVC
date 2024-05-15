@@ -1,11 +1,10 @@
 <?php
-
 use Model\entity\Film;
 use Model\entity\Acteur;
 use Model\entity\Role;
 use Model\repository\FilmDAO;
 use Model\repository\ActeurDAO;
-
+require_once __DIR__ . '/../config/init.php';
 $message=null;
 $film=null;
 

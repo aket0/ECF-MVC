@@ -2,7 +2,7 @@
 
 use Model\entity\User;
 use Model\repository\UserDAO;
-
+require_once __DIR__ . '/../config/init.php';
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../view');
 $twig = new \Twig\Environment($loader);
 $twig->addGlobal('session', $_SESSION);
@@ -10,6 +10,8 @@ $userDAO = new UserDAO();
 
 $register_error = null;
 $login_error = null;
+
+$userLoggedIn = isset($_SESSION['user']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $form_type = $_POST['form_type'];
@@ -63,4 +65,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 echo $twig->render('login.html.twig', [
     'register_error' => $register_error,
     'login_error' => $login_error,
+    'userLoggedIn' => $userLoggedIn,
 ]);

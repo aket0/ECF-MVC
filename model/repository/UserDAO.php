@@ -31,9 +31,8 @@ class UserDAO extends Dao
         $values = [
             'username' => $data->getUsername(),
             'email' => $data->getEmail(),
-            'mdp' => password_hash($data->getPassword(), PASSWORD_DEFAULT),
+            'password' => password_hash($data->getPassword(), PASSWORD_DEFAULT),
         ];
-        var_dump($data);    
         $insert = self::$bdd->prepare($requette);
         return $insert->execute($values);
         
