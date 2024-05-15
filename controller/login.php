@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $register_error = 'Email already taken';
             } else {
                 // Create a new user object and try to add it to the database
-                $user = new User(null, $username, $email, password_hash($password, PASSWORD_DEFAULT)); // Hash the password
+                $user = new User(null, $username, $email, $password); // Hash the password
                 if (UserDAO::addOne($user)) {
                     $_SESSION['user'] = $user;
                     header('Location: /ECF-MVC/?action=home');
@@ -42,18 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             }
         }
-    } elseif ($form_type === 'login') {
-        // Handle login
-        $email = $_POST['login_email'];
-        $password = $_POST['login_password'];
+    }  elseif ($form_type === 'login') {
+        // Traitement du formulaire de connexion
+        $email = $_POST['login_email']; // Correction: Utiliser 'login_email'
+        $password = $_POST['login_password']; // Correction: Utiliser 'login_password'
 
         $user = UserDAO::getByEmail($email);
-
         if ($user && password_verify($password, $user->getPassword())) {
+            // Authentification réussie
             $_SESSION['user'] = $user;
             header('Location: /ECF-MVC/?action=home');
             exit;
         } else {
+            // Authentification échouée
             $login_error = 'Email ou mot de passe incorrect.';
         }
     }
