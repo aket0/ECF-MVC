@@ -3,9 +3,9 @@
 use Model\entity\User;
 use Model\repository\UserDAO;
 
-// $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../view');
-// $twig = new \Twig\Environment($loader);
-// $twig->addGlobal('session', $_SESSION);
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../view');
+$twig = new \Twig\Environment($loader);
+$twig->addGlobal('session', $_SESSION);
 $userDAO = new UserDAO();
 
 $register_error = null;
