@@ -19,8 +19,8 @@ foreach ($films as $film) {
 
     // Stocker les rôles dans le tableau associatif avec l'identifiant du film comme clé
     $rolesByFilm[$film->getId()] = $roles;
+    var_dump($roles);
 }
-var_dump($rolesByFilm);
 unset($_SESSION['user']);
 // $_SESSION['user'] = 'vince@afpa.com';
 
