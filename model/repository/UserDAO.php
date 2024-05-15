@@ -15,7 +15,7 @@ class UserDAO extends Dao
         $users = [];
 
         while ($data = $query->fetch()) {
-            $users[] = new User($data['id'], $data['username'], $data['email'], $data['mdp']);
+            $users[] = new User($data['id'], $data['username'], $data['email'], $data['password']);
         }
         return $users;
     }
@@ -27,13 +27,12 @@ class UserDAO extends Dao
             throw new \InvalidArgumentException('Expected instance of User');
         }
 
-        $requette = 'INSERT INTO user (username, email, password) VALUES (:username, :email, :mdp)';
+        $requette = 'INSERT INTO user (username, email, password) VALUES (:username, :email, :password)';
         $values = [
             'username' => $data->getUsername(),
             'email' => $data->getEmail(),
-            'mdp' => password_hash($data->getPassword(), PASSWORD_DEFAULT),
+            'password' => password_hash($data->getPassword(), PASSWORD_DEFAULT),
         ];
-        var_dump($data);    
         $insert = self::$bdd->prepare($requette);
         return $insert->execute($values);
         
@@ -59,7 +58,7 @@ class UserDAO extends Dao
         $data = $query->fetch();
 
         if ($data) {
-            return new User($data['id'], $data['username'], $data['email'], $data['mdp']);
+            return new User($data['id'], $data['username'], $data['email'], $data['password']);
         }
         return null;
     }
