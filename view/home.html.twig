@@ -1,25 +1,47 @@
-<div>
-	{% for film in films %}
-		<div>
-			<form method="post">
-				<div class="container">
-					
-					<label for="title">
-						<b>{{film.getTitre}}
-						{{film.getRealisateur}}
-						<img src="{{film.getAffiche}}" alt="">
-						{{film.getAnnee}}
+
+<link rel="stylesheet" href="./web/css/home.css">
+<div class="container p-2 col-md-7 " style="height: 500px;">
+	<div id="header-carousel" class="carousel slide h-100 " data-bs-ride="carousel">
+		<div
+		class="carousel-inner h-100">
+	
+		{% for film in films %}
 
 
-						{{film.getRole}}
-						</b>
-					</label>
-					
-					<input value="{{film.getId}}" name="id" type="hidden">
-
+			<div class="carousel-item  {{loop.first ? 'active' : ''}} h-100">
+				<div class="card mb-3 border-0" >
+					<div class="row g-0 " >
+						<div class="col-md-8 h-100" >
+							<div class="card-body h-100">
+								<h5 class="card-title">{{film.getId}} - {{film.getTitre}}</h5>
+								<p class="card-text">Réalisé en {{film.getAnnee}} par {{film.getRealisateur}}</p>
+								{% set roles = rolesByFilm[film.getId()] %}
+								{% for role in roles %}	
+								<p class="card-text">Avec{{role.getActeur.getPrenom}} {{role.getActeur.getPrenom}} dans le rôle de {{role.personnage}}</p>
+							{% endfor %}
+							</div>
+						</div>
+						<div class=" d-block col-md-4 p-2 " >
+						  <img class="img-fluid "  src="{{film.getAffiche}}" alt="Image">
+						</div>
+					</div>
 				</div>
-			</form>
+				
+			
+			</div>
+			{% endfor %}
+		
 		</div>
-	{% endfor %}
+	</div>
+</div>
+<div class="container ">
+<div class="d-flex justify-content-center p-2">
+	<button  type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+		prev
+	</button>
+	<button  type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+		next
+	</button>
+</div>
 </div>
 

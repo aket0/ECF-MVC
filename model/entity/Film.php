@@ -3,6 +3,10 @@
 namespace Model\entity;
 use Model\entity\Role;
 
+use Model\entity\Role;
+
+
+
 /**
  * Description of Film
  *
@@ -15,10 +19,11 @@ class Film
     private $realisateur;
     private $affiche;
     private $annee;
-    private $role;
+
+    private $role = [];
 
 
-    public function __construct(?int $id, string $titre, string $realisateur, string $affiche, string $annee, Role $role)
+    public function __construct(?int $id, string $titre, string $realisateur, string $affiche, string $annee, array $role = null)
 
     {
         $this->setId($id);
@@ -28,6 +33,8 @@ class Film
         $this->setAnnee($annee);
         $this->setRole($role);
     }
+
+
 
 
 
@@ -133,7 +140,9 @@ class Film
 
     /**
      * Get the value of role
-     */ 
+
+     */
+
     public function getRole()
     {
         return $this->role;
@@ -143,7 +152,9 @@ class Film
      * Set the value of role
      *
      * @return  self
-     */ 
+
+     */
+
     public function setRole($role)
     {
         $this->role = $role;

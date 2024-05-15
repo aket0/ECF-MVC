@@ -20,18 +20,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirm-password'];
-
-        if ($password !== $confirmPassword) {
+    
+        // Basic validation
+        if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
+            $register_error = 'All fields are required.';
+        } elseif ($password !== $confirmPassword) {
             $register_error = 'Les mots de passe ne correspondent pas.';
         } else {
-            $user = new User(null, $username, $email, $password);
-
-            if (UserDAO::addOne($user)) {
-                $_SESSION['user'] = $user;
-                header('Location: /ECF-MVC/?action=home');
-                exit;
+            // Check if email is already taken
+            if (UserDAO::getByEmail($email)) {
+                $register_error = 'Email already taken';
             } else {
-                $register_error = "Erreur lors de l'inscription.";
+                // Create a new user object and try to add it to the database
+                $user = new User(null, $username, $email, password_hash($password, PASSWORD_DEFAULT)); // Hash the password
+                if (UserDAO::addOne($user)) {
+                    $_SESSION['user'] = $user;
+                    header('Location: /ECF-MVC/?action=home');
+                    exit;
+                } else {
+                    $register_error = "Erreur lors de l'inscription.";
+                }
             }
         }
     } elseif ($form_type === 'login') {

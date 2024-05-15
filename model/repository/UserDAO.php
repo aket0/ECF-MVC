@@ -31,7 +31,7 @@ class UserDAO extends Dao
         $values = [
             'username' => $data->getUsername(),
             'email' => $data->getEmail(),
-            'mdp' => $data->getPassword(),
+            'mdp' => password_hash($data->getPassword(), PASSWORD_DEFAULT),
         ];
         var_dump($data);    
         $insert = self::$bdd->prepare($requette);
@@ -59,7 +59,7 @@ class UserDAO extends Dao
         $data = $query->fetch();
 
         if ($data) {
-            return new User($data['id'], $data['username'], $data['email'], $data['password']);
+            return new User($data['id'], $data['username'], $data['email'], $data['mdp']);
         }
         return null;
     }
