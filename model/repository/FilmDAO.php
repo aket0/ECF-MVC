@@ -13,19 +13,18 @@ class FilmDAO extends Dao
     public static function getAll(): array
     {
 
-        $query = self::$bdd->prepare("SELECT *
-        FROM (role INNER JOIN film ON role.id_film = film.id)
-        INNER JOIN acteur ON role.id_acteur = acteur.id");
+        $query = self::$bdd->prepare("SELECT * FROM film"); 
         $query->execute();
         $films = array();
         
         while ($data = $query->fetch()) {
             $role = array();
             $role = FilmDAO::getRole($data['id']);
-            var_dump($role);
+           
             $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $role);
-            
+        
         }
+        // var_dump($films);
         return ($films);
     }
 
