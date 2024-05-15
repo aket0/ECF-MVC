@@ -1,50 +1,71 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte et se connecter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
         <div class="row">
             <div class="col">
                 <h2>Créer un compte</h2>
-                <form action="/login" method="post">
+                {% if register_error %}
+                    <div class="alert alert-danger">{{ register_error }}</div>
+                {% endif %}
+                {% if register_success %}
+                    <div class="alert alert-success">{{ register_success }}</div>
+                {% endif %}
+                <form action="?action=login" method="post">
+                    <input type="hidden" name="form_type" value="register">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
+                        <label  for="username" class="form-label font-weight-bold h5">Username</label>
                         <input type="text" class="form-control" id="username" name="username" required>
-                        <p id="require">username can contain any letters or number, without spaces</p>
-                    </div>
-                     <div class="mb-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                        <p id="require">Please provide your E-mail</p>
+                        <p class="font-italic text-secondary" id="require">Username can contain any letters or numbers, without spaces</p>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                        <p id="require">Password should be at least 4 characters </p>
-
+                        <label  for="email" class="form-label font-weight-bold h5">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <p class="font-italic text-secondary" id="require">Please provide your E-mail</p>
                     </div>
-                     <div class="mb-3">
-                        <label for="confirme-password" class="form-label">Password (Confirm):</label>
-                        <input type="password" class="form-control" id="password" name="confirme-password" required>
-                        <p id="require">Please confirm password</p>
-
+                    <div class="mb-3">
+                        <label " for="password" class="form-label font-weight-bold h5">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" min="4" required>
+                        <p class="font-italic text-secondary" id="require">Password should be at least 4 characters</p>
                     </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="mb-3">
+                        <label " for="confirm-password" class="form-label font-weight-bold h5">Password (Confirm)</label>
+                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" min="4" required>
+                        <p class="font-italic text-secondary" id="require">Please confirm password</p>
+                    </div>
+                    <button type="submit" class="btn btn-success mx-auto d-block">Register</button>
                 </form>
             </div>
             <div class="col">
                 <h2>Identification</h2>
-                <form action="/register" method="post">
+                {% if login_error %}
+                    <div class="alert alert-danger">{{ login_error }}</div>
+                {% endif %}
+                {% if login_success %}
+                    <div class="alert alert-success">{{ login_success }}</div>
+                {% endif %}
+                <form action="?action=login" method="post">
+                    <input type="hidden" name="form_type" value="login">
                     <div class="mb-3">
-                        <label for="new_email" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="new_email" name="new_email" required>
-                        <p id="require">Please provide your E-mail</p>
-
+                        <label for="login_email" class="form-label font-weight-bold h5">Email</label>
+                        <input type="email" class="form-control" id="login_email" name="login_email" required>
+                        <p class="font-italic text-secondary" id="require">Please provide your E-mail</p>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                        <p id="require">Password should be at least 4 characters </p>
-
+                        <label for="login_password" class="form-label font-weight-bold h5">Password</label>
+                        <input type="password" class="form-control" id="login_password" name="login_password" required>
+                        <p class="font-italic text-secondary" id="require">Password should be at least 4 characters</p>
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-success mx-auto d-block" col-3>Login</button>
                 </form>
             </div>
         </div>
-
+    </div>
+</body>
+</html>

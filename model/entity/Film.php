@@ -20,7 +20,9 @@ class Film
     private $annee;
     private $role = [];
 
+
     public function __construct(?int $id, string $titre, string $realisateur, string $affiche, string $annee, array $role = null)
+
     {
         $this->setId($id);
         $this->setTitre($titre);
