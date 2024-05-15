@@ -18,7 +18,7 @@ class Film
     private $role;
 
 
-    public function __construct(?int $id, string $titre, string $realisateur, string $affiche, string $annee, Role $role =null)
+    public function __construct(?int $id, string $titre, string $realisateur, string $affiche, string $annee, Role $role)
 
     {
         $this->setId($id);
