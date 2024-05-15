@@ -2,13 +2,16 @@
 
 use Model\entity\Film;
 use Model\repository\FilmDAO;
+require_once __DIR__ . '/../config/init.php';
 
 
 
 // var_dump($_POST['motCle']);
 // var_dump("Bonjour");
 
-$offre = null;
+
+$offre = null; 
+
 
 $filmDao = new FilmDAO();
 
