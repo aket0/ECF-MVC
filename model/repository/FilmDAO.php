@@ -4,6 +4,7 @@ namespace Model\repository;
 
 use Model\entity\Film;
 use Model\entity\Role;
+use Model\entity\Acteur;
 use Model\repository\Dao;
 
 class FilmDAO extends Dao
@@ -68,15 +69,34 @@ class FilmDAO extends Dao
         $insert = self::$bdd->prepare($requete);
         return $insert->execute($valeurs);
     }
-    // //Verification de Role
-    // public static function getRole($personnage): Role
-    // {
-    //     $query = self::$bdd->prepare('SELECT * FROM Role WHERE personnage = :personnage');
-    //     $query->execute(array(':personnage' => $personnage));
-    //     $data = $query->fetch();
-    //     return new Role($data['id_Acteur'], $data['id_Film'], $data['id'], $data['personnage'],);
-    // }
-    //Rechercher un film par titre
+
+    public static function getRole(int $idFilm, int $idRole): ?Role
+    {
+        $query = self::$bdd->prepare('SELECT * FROM Role WHERE id_Film = :idFilm AND id = :idRole');
+        $query->execute([':idFilm' => $idFilm, ':idRole' => $idRole]);
+        $data = $query->fetch();
+
+        if ($data) {
+            return new Role($data['id_Acteur'], $data['id_Film'], $data['id'], $data['personnage']);
+        } else {
+            return null;
+        }
+    }
+    public function getRolesByFilm(int $idFilm): array
+    {
+        $query = self::$bdd->prepare('SELECT Role.*, Acteur.nom AS nom_acteur, Acteur.prenom AS prenom_acteur FROM Role INNER JOIN Acteur ON Role.id_Acteur = Acteur.id WHERE id_Film = :idFilm');
+        $query->execute([':idFilm' => $idFilm]);
+        $roles = [];
+
+        while ($data = $query->fetch()) {
+            $acteur = new Acteur($data['id_Acteur'], $data['nom_acteur'], $data['prenom_acteur']);
+            $role = new Role($acteur->getId(), $data['id_Film'], $data['id'], $data['personnage']);
+            $roles[] = $role;
+        }
+
+        return $roles;
+    }
+    // Rechercher un film par titre
     public static function searchOne(string $titre): array
     {
         $query = self::$bdd->prepare('SELECT * FROM Film WHERE titre LIKE :titre');
