@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un compte et se connecter</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href=".//view/web/css/creer.css">
+
 </head>
 <body>
     <div class="container">
@@ -45,18 +47,19 @@
                     </div>
                     <div class="col-md-12">
                         <label for="roles" class="form-label">Rôles</label>
-                        <input id="ajout" type="button" name="ajout" value="Ajouter">
+                        <input id="ajout" type="button" name="ajout" value="Ajouter" class="add">
                        
                     </div>
-                    
+                        <div id="role" class="col-md-12">
                         <div class="col">
-                            <input class="col-md-3" type="text" id="titre" name="personnage" placeholder="Personnage">
-                            <input class="col-md-3" type="text" id="titre" name="nom" placeholder="Nom">
-                            <input class="col-md-3" type="text" id="titre" name="prenom" placeholder="Prenom">
+                            <input class="col-md-3" type="text" name="personnage[]" placeholder="Personnage">
+                            <input class="col-md-3" type="text"  name="nom[]" placeholder="Nom">
+                            <input class="col-md-3" type="text" name="prenom[]" placeholder="Prenom">
                         </div>
+                       
+
+                    </div>
                     
-
-
 
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>

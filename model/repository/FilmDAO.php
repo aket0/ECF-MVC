@@ -38,6 +38,19 @@ class FilmDAO extends Dao
         return $insert->execute($valeurs);
     }
 
+    //fonction qui ajoute un film et qui me retourne l'id de l'insertion 
+    public static function addOneFilm($data): ?int
+    {
+
+        $requete = 'INSERT INTO Film (titre, realisateur, affiche, annee) VALUES (:titre , :realisateur, :affiche, :annee)';
+        $valeurs = ['titre' => $data->getTitre(), 'realisateur' => $data->getRealisateur(), 'affiche' => $data->getAffiche(), 'annee' => $data->getAnnee()];
+        $insert = self::$bdd->prepare($requete);
+        $insert->execute($valeurs);
+        $last_insert_id = self::$bdd->lastInsertId();
+            //var_dump($last_insert_id);
+        return $last_insert_id;
+    }
+
     //Récupérer plus d'info sur 1 film
     public static function getOne(int $id): Film
     {
@@ -45,6 +58,18 @@ class FilmDAO extends Dao
         $query->execute(array(':id_film' => $id));
         $data = $query->fetch();
         return new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+    }
+    //rechercher un film par titre et année
+    public static function getOneByTitre(string $titre, string $annee): Film
+    {
+        $query = self::$bdd->prepare('SELECT * FROM Film WHERE titre = :titre AND annee = :annee ');
+        $query->execute(array(':titre' => $titre, ':annee' => $annee));
+        $data = $query->fetch();
+        if($data){
+            return new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+        }
+        else return null;
+        
     }
 
     //Deleter 1 film par son id
@@ -68,8 +93,9 @@ class FilmDAO extends Dao
     //Ajouter un role
     public static function addOneRole($data): bool
     {
-        $requete = 'INSERT INTO Role (personnage) VALUES (:personnage) WHERE id_Film = :id_Film AND id_Acteur = :id_Acteur ';
-        $valeurs = ['personnage' => $data->getPersonnage()];
+        $requete = 'INSERT INTO Role (id_Acteur , id_film , id,  personnage) VALUES (:id_Acteur , :id_film ,:id, :personnage)';
+        var_dump($data->getActeur());
+        $valeurs = ['id_Acteur' => $data->getActeur()->getId(), 'id_film' => $data->getId_Film(),'id'=>$data->getId(),'personnage' => $data->getPersonnage()];
         $insert = self::$bdd->prepare($requete);
         return $insert->execute($valeurs);
     }
