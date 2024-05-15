@@ -15,7 +15,7 @@
 								<p class="card-text">Réalisé en {{film.getAnnee}} par {{film.getRealisateur}}</p>
 								{% set roles = rolesByFilm[film.getId()] %}
 								{% for role in roles %}	
-								<p class="card-text">Avec{{role.getActeur.getPrenom}} {{role.getActeur.getPrenom}} dans le rôle de {{role.personnage}}</p>
+								<p class="card-text">Avec {{role.getActeur.getPrenom}} {{role.getActeur.getNom}} dans le rôle de {{role.personnage}}</p>
 							{% endfor %}
 							</div>
 						</div>

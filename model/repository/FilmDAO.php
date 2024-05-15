@@ -90,7 +90,7 @@ class FilmDAO extends Dao
 
         while ($data = $query->fetch()) {
             $acteur = new Acteur($data['id_Acteur'], $data['nom_acteur'], $data['prenom_acteur']);
-            $role = new Role($acteur->getId(), $data['id_Film'], $data['id'], $data['personnage']);
+            $role = new Role($acteur, $data['id_Film'], $data['id'], $data['personnage']);
             $roles[] = $role;
         }
 
