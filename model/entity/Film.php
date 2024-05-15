@@ -6,6 +6,8 @@ use Model\entity\Role;
 
 
 
+
+
 /**
  * Description of Film
  *
@@ -138,7 +140,9 @@ class Film
 
     /**
      * Get the value of role
+
      */
+
     public function getRole()
     {
         return $this->roles;
@@ -148,7 +152,9 @@ class Film
      * Set the value of role
      *
      * @return  self
+
      */
+
     public function setRole($role)
     {
         $this->roles = $role;

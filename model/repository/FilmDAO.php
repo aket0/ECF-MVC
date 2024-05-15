@@ -14,13 +14,17 @@ class FilmDAO extends Dao
     public static function getAll(): array
     {
 
-        $query = self::$bdd->prepare("SELECT * FROM Film");
+        $query = self::$bdd->prepare("SELECT * FROM film");
         $query->execute();
         $films = array();
 
         while ($data = $query->fetch()) {
-            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+            $role = array();
+
+
+            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $role);
         }
+        // var_dump($films);
         return ($films);
     }
 
@@ -70,18 +74,7 @@ class FilmDAO extends Dao
         return $insert->execute($valeurs);
     }
 
-    public static function getRole(int $idFilm, int $idRole): ?Role
-    {
-        $query = self::$bdd->prepare('SELECT * FROM Role WHERE id_Film = :idFilm AND id = :idRole');
-        $query->execute([':idFilm' => $idFilm, ':idRole' => $idRole]);
-        $data = $query->fetch();
 
-        if ($data) {
-            return new Role($data['id_Acteur'], $data['id_Film'], $data['id'], $data['personnage']);
-        } else {
-            return null;
-        }
-    }
     public function getRolesByFilm(int $idFilm): array
     {
         $query = self::$bdd->prepare('SELECT Role.*, Acteur.nom AS nom_acteur, Acteur.prenom AS prenom_acteur FROM Role INNER JOIN Acteur ON Role.id_Acteur = Acteur.id WHERE id_Film = :idFilm');
@@ -97,6 +90,7 @@ class FilmDAO extends Dao
         return $roles;
     }
     // Rechercher un film par titre
+
     public static function searchOne(string $titre): array
     {
         $query = self::$bdd->prepare('SELECT * FROM Film WHERE titre LIKE :titre');

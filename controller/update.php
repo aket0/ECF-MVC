@@ -5,7 +5,7 @@ use Model\repository\OffreDAO;
 
 $message = null;
 $offre = null;
-$offreDao = new OffreDAO();
+
 
 if (isset($_POST['id'])) {
     $offre = $offreDao::getOne($_POST['id']);

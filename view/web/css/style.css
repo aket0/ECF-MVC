@@ -19,7 +19,7 @@ body {
 
 
 header {
-   padding-left: 10px;
+   /* padding-left: 10px; */
    width: 100%;
    margin-bottom: 20px;
 
@@ -27,7 +27,6 @@ header {
 
 .navbar {
    background-color: #3e4246 !important;
-   padding: 10px;
    box-shadow: 10px 5px 5px rgb(117, 115, 115);
    width: 100%;
 

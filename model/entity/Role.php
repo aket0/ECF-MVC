@@ -18,9 +18,8 @@ class Role
     private $personnage;
 
 
-    public function __construct(Acteur $acteur, int $id_Film, int $id, string $personnage)
+    public function __construct(Acteur $acteur, int $id_Film, ?int $id, string $personnage)
     {
-
         $this->setActeur($acteur);
         $this->setID_Film($id_Film);
         $this->setId($id);
@@ -69,6 +68,10 @@ class Role
     }
 
 
+
+    /**
+     * Get the value of id_Acteur
+     */
 
 
     /**

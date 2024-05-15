@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte et se connecter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+    {% if message is null %}
+        <div class="col">
+            
+                <h2>Ajouter un film</h2>
+                
+                <form action="creer" method="post" class="row g-3">
+                    
+                    <div class="col-md-6">
+                        <label for="titre" class="form-label">Titre</label>
+                        <input type="text" class="form-control" id="titre" name="titre" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="annee" class="form-label">Année</label>
+                        <input type="text" class="form-control" id="annee" name="annee" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="affiche" class="form-label">Affiche</label>
+                        <input type="text" class="form-control" id="affiche" name="affiche" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="realisateur" class="form-label">Réalisateur</label>
+                        <input type="text" class="form-control" id="realisateur" name="realisateur" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustom04" class="form-label">Genre</label>
+                        <select name= "genre" class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="aventure">Aventure</option>
+                            <option>Drame</option>
+                            <option>Romance</option>
+                            <option>Thriller</option>
+                        </select>
+                        <div class="invalid-feedback">
+                         Please select a valid state.
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="roles" class="form-label">Rôles</label>
+                        <input id="ajout" type="button" name="ajout" value="Ajouter">
+                       
+                    </div>
+                    
+                        <div class="col">
+                            <input class="col-md-3" type="text" id="titre" name="personnage" placeholder="Personnage">
+                            <input class="col-md-3" type="text" id="titre" name="nom" placeholder="Nom">
+                            <input class="col-md-3" type="text" id="titre" name="prenom" placeholder="Prenom">
+                        </div>
+                    
+
+
+
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+        </div>
+    {% else %}
+	    <div>
+		<p>{{message}}
+			:</p><br>
+	
+	    </div>
+{% endif %}
+
+            
+        
+    </div>
+</body>
+<script src="./view/web/js/ajout.js"></script>
+</html>
