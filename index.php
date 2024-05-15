@@ -23,6 +23,7 @@ $routes = [
     'login' => './controller/login.php',
 
     'recherche' => './controller/recherche.php',
+    'creer' => './controller/creer.php',
    
 
 ];

@@ -1,6 +1,7 @@
 <?php
 
 namespace Model\entity;
+use Model\entity\Role;
 
 use Model\entity\Role;
 
@@ -18,6 +19,7 @@ class Film
     private $realisateur;
     private $affiche;
     private $annee;
+
     private $role = [];
 
 
@@ -138,7 +140,9 @@ class Film
 
     /**
      * Get the value of role
+
      */
+
     public function getRole()
     {
         return $this->role;
@@ -148,7 +152,9 @@ class Film
      * Set the value of role
      *
      * @return  self
+
      */
+
     public function setRole($role)
     {
         $this->role = $role;

@@ -17,7 +17,9 @@
                 {% if register_success %}
                     <div class="alert alert-success">{{ register_success }}</div>
                 {% endif %}
+
                 <form action="?action=login" method="post">
+
                     <input type="hidden" name="form_type" value="register">
                     <div class="mb-3">
                         <label  for="username" class="form-label font-weight-bold h5">Username</label>
@@ -50,7 +52,9 @@
                 {% if login_success %}
                     <div class="alert alert-success">{{ login_success }}</div>
                 {% endif %}
+
                 <form action="?action=login" method="post">
+
                     <input type="hidden" name="form_type" value="login">
                     <div class="mb-3">
                         <label for="login_email" class="form-label font-weight-bold h5">Email</label>

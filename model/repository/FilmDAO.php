@@ -14,13 +14,18 @@ class FilmDAO extends Dao
     public static function getAll(): array
     {
 
-        $query = self::$bdd->prepare("SELECT * FROM Film");
+        $query = self::$bdd->prepare("SELECT * FROM film"); 
         $query->execute();
         $films = array();
-
+        
         while ($data = $query->fetch()) {
-            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+            $role = array();
+            $role = FilmDAO::getRole($data['id']);
+           
+            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $role);
+        
         }
+        // var_dump($films);
         return ($films);
     }
 
@@ -97,6 +102,7 @@ class FilmDAO extends Dao
         return $roles;
     }
     // Rechercher un film par titre
+
     public static function searchOne(string $titre): array
     {
         $query = self::$bdd->prepare('SELECT * FROM Film WHERE titre LIKE :titre');

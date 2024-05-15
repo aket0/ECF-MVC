@@ -11,15 +11,15 @@ namespace Model\entity;
 class Role
 {
 
-    private $id_Acteur;
+    private $acteur;
     private $id_Film;
     private $id;
     private $personnage;
 
 
-    public function __construct(int $id_Acteur, int $id_Film, int $id, string $personnage)
+    public function __construct(Acteur $acteur, int $id_Film, ?int $id, string $personnage)
     {
-        $this->setID_Acteur($id_Acteur);
+        $this->setActeur($acteur);
         $this->setID_Film($id_Film);
         $this->setId($id);
         $this->setPersonnage($personnage);
@@ -71,23 +71,8 @@ class Role
     /**
      * Get the value of id_Acteur
      */
-    public function getId_Acteur()
-    {
-        return $this->id_Acteur;
-    }
-
-    /**
-     * Set the value of id_Acteur
-     *
-     * @return  self
-     */
-    public function setId_Acteur($id_Acteur)
-    {
-        $this->id_Acteur = $id_Acteur;
-
-        return $this;
-    }
-
+    
+    
     /**
      * Get the value of id_Film
      */
@@ -104,6 +89,26 @@ class Role
     public function setId_Film($id_Film)
     {
         $this->id_Film = $id_Film;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of acteur
+     */ 
+    public function getActeur()
+    {
+        return $this->acteur;
+    }
+
+    /**
+     * Set the value of acteur
+     *
+     * @return  self
+     */ 
+    public function setActeur($acteur)
+    {
+        $this->acteur = $acteur;
 
         return $this;
     }
