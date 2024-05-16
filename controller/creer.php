@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 $role= new Role($acteur, $id_film ,random_int(50, 999),$elements[0]);
                 $test=$filmDao::addOneRole($role);
-                echo $test;
+                // echo $test;
             }
 
             

@@ -1,30 +1,35 @@
 let ajouter = document.getElementById("ajout");
 let roles = document.getElementById("role");
 
+//suppression des champs
 function removeInput() {
     this.parentElement.remove();
 }
 
+//ajout d'un input
+function addInput(element, text) {
+
+    element.type = "text";
+    element.name = text + "[]";
+    element.placeholder = text;
+    element.className = "col-md-3";
+    element.required = true;
+}
+
+
+//ajout du champs role
 function ajoutRole(event) {
-    console.log("coucou");
     const personnage = document.createElement("input")
-    personnage.type = "text";
-    personnage.name = "personnage[]";
-    personnage.placeholder = "Personnage";
-    personnage.className = "col-md-3";
+    const text = "personnage";
+    addInput(personnage, text);
 
     const nom = document.createElement("input")
-    nom.type = "text";
-    nom.name = "nom[]";
-    nom.placeholder = "Nom";
-    nom.className = "col-md-3";
+    const text_nom = "nom";
+    addInput(nom, text_nom);
 
     const prenom = document.createElement("input")
-    prenom.type = "text";
-    prenom.name = "prenom[]";
-    prenom.placeholder = "Prenom";
-    prenom.className = "col-md-3";
-
+    const text_prenom = "prenom";
+    addInput(prenom, text_prenom);
 
     const btn = document.createElement("input");
     btn.className = "col-md-2";
