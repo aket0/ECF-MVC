@@ -64,7 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $test=$filmDao::addOneRole($role);
             } 
 
+
         }
+
+        $message="Votre film a été bien ajouter";
     }
     //vérifier si l'acteur existe dans la table
 
