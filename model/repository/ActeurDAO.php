@@ -14,7 +14,7 @@ class ActeurDAO extends Dao
 
         $query = self::$bdd->prepare("SELECT id, nom, prenom FROM acteur");
         $query->execute();
-        $offres = array();
+        
 
         while ($data = $query->fetch()) {
             $acteurs[] = new Acteur($data['id'], $data['nom'], $data['prenom']);

@@ -92,7 +92,7 @@ class FilmDAO extends Dao
     public static function addOneRole($data): bool
     {
         $requete = 'INSERT INTO Role (id_Acteur , id_film , id,  personnage) VALUES (:id_Acteur , :id_film ,:id, :personnage)';
-        var_dump($data->getActeur());
+        
         $valeurs = ['id_Acteur' => $data->getActeur()->getId(), 'id_film' => $data->getId_Film(), 'id' => $data->getId(), 'personnage' => $data->getPersonnage()];
         $insert = self::$bdd->prepare($requete);
         return $insert->execute($valeurs);
