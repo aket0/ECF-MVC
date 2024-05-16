@@ -60,7 +60,7 @@ class FilmDAO extends Dao
         return new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
     }
     //rechercher un film par titre et année
-    public static function getOneByTitre(string $titre, string $annee): Film
+    public static function getOneByTitre(string $titre, string $annee): ?Film
     {
         $query = self::$bdd->prepare('SELECT * FROM Film WHERE titre = :titre AND annee = :annee ');
         $query->execute(array(':titre' => $titre, ':annee' => $annee));
