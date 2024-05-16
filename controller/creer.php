@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $acteur=$acteurDao::getActeurByName($elements[1],$elements[2]);
 
             if(empty($acteur)){
+               // echo $elements[0] ." ..".$elements[1];
                 $acteur= new Acteur(null, $elements[1],$elements[2]);
                 $id_acteur=$acteurDao::addOneActeur($acteur);
                 $acteur->setId($id_acteur);

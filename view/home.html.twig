@@ -12,8 +12,8 @@
                             <div class="card-body h-100">
                                 <h3 class="card-title mt-2 mb-4">{{film.getId}} - {{film.getTitre}}</h3>
                                 <p class="card-text mb-1 text-muted">Réalisé en <strong>{{film.getAnnee}}</strong> par <strong>{{film.getRealisateur}}</strong></p>
-                                {% set roles = rolesByFilm[film.getId()] %}
-                                {% for role in roles %}
+                                {# {% set roles = rolesByFilm[film.getId()] %} #}
+                                {% for role in film.getRoLe %}
                                 <p class="card-text m-0 text-muted">Avec <u><em>{{role.getActeur.getPrenom}} {{role.getActeur.getNom}}</em></u> dans le rôle de <strong>{{role.personnage}}</strong></p>
                             {% endfor %}
                             </div>
