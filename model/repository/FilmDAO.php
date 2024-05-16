@@ -19,10 +19,10 @@ class FilmDAO extends Dao
         $films = array();
 
         while ($data = $query->fetch()) {
-            $role = array();
+            $roles = self::getRolesByFilm($data['id']);
 
 
-            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $role);
+            $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $roles);
         }
         // var_dump($films);
         return ($films);
@@ -47,7 +47,7 @@ class FilmDAO extends Dao
         $insert = self::$bdd->prepare($requete);
         $insert->execute($valeurs);
         $last_insert_id = self::$bdd->lastInsertId();
-            //var_dump($last_insert_id);
+        //var_dump($last_insert_id);
         return $last_insert_id;
     }
 
@@ -65,11 +65,9 @@ class FilmDAO extends Dao
         $query = self::$bdd->prepare('SELECT * FROM Film WHERE titre = :titre AND annee = :annee ');
         $query->execute(array(':titre' => $titre, ':annee' => $annee));
         $data = $query->fetch();
-        if($data){
+        if ($data) {
             return new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
-        }
-        else return null;
-        
+        } else return null;
     }
 
     //Deleter 1 film par son id
@@ -95,13 +93,13 @@ class FilmDAO extends Dao
     {
         $requete = 'INSERT INTO Role (id_Acteur , id_film , id,  personnage) VALUES (:id_Acteur , :id_film ,:id, :personnage)';
         var_dump($data->getActeur());
-        $valeurs = ['id_Acteur' => $data->getActeur()->getId(), 'id_film' => $data->getId_Film(),'id'=>$data->getId(),'personnage' => $data->getPersonnage()];
+        $valeurs = ['id_Acteur' => $data->getActeur()->getId(), 'id_film' => $data->getId_Film(), 'id' => $data->getId(), 'personnage' => $data->getPersonnage()];
         $insert = self::$bdd->prepare($requete);
         return $insert->execute($valeurs);
     }
 
 
-    public function getRolesByFilm(int $idFilm): array
+    public static function getRolesByFilm(int $idFilm): array
     {
         $query = self::$bdd->prepare('SELECT Role.*, Acteur.nom AS nom_acteur, Acteur.prenom AS prenom_acteur FROM Role INNER JOIN Acteur ON Role.id_Acteur = Acteur.id WHERE id_Film = :idFilm');
         $query->execute([':idFilm' => $idFilm]);
