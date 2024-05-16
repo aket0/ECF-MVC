@@ -56,16 +56,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $acteur=$acteurDao::getActeurByName($elements[1],$elements[2]);
 
             if(empty($acteur)){
-                echo $elements[0] ." ..".$elements[1];
                 $acteur= new Acteur(null, $elements[1],$elements[2]);
                 $id_acteur=$acteurDao::addOneActeur($acteur);
                 $acteur->setId($id_acteur);
                 $role= new Role($acteur, $id_film ,random_int(50, 999),$elements[0]);
                 $test=$filmDao::addOneRole($role);
-            } 
+            }
+            else{
+                
+                $role= new Role($acteur, $id_film ,random_int(50, 999),$elements[0]);
+                $test=$filmDao::addOneRole($role);
+                echo $test;
+            }
 
-
+            
         }
+        
 
         $message="Votre film a été bien ajouter";
     }

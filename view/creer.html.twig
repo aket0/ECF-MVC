@@ -11,6 +11,13 @@
 <body>
     <div class="container">
     {% if message is null %}
+        <p>Une erreur s'est produite lors de la création de votre film<br>
+    {% else %}
+	    <div>
+		<p>{{message}}</p><br>
+	
+	    </div>
+    {% endif %}
         <div class="col">
             
                 <h2>Ajouter un film</h2>
@@ -52,25 +59,19 @@
                     </div>
                         <div id="role" class="col-md-12">
                         <div class="col">
-                            <input class="col-md-3" type="text" name="personnage[]" placeholder="Personnage">
-                            <input class="col-md-3" type="text"  name="nom[]" placeholder="Nom">
-                            <input class="col-md-3" type="text" name="prenom[]" placeholder="Prenom">
+                            <input class="col-md-3" type="text" name="personnage[]" placeholder="Personnage" required>
+                            <input class="col-md-3" type="text"  name="nom[]" placeholder="Nom" required>
+                            <input class="col-md-3" type="text" name="prenom[]" placeholder="Prenom" required>
                         </div>
                        
 
                     </div>
                     
 
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary">Créer</button>
                 </form>
         </div>
-    {% else %}
-	    <div>
-		<p>{{message}}
-			:</p><br>
-	
-	    </div>
-{% endif %}
+    
 
             
         
