@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="container">
-    {% if message is null %}
-        <p>Une erreur s'est produite lors de la création de votre film<br>
-    {% else %}
+    
+       
+    {% if message is not null %}
 	    <div>
 		<p>{{message}}</p><br>
 	
