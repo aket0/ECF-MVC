@@ -2,9 +2,11 @@
     <div id="header-carousel" class="carousel slide h-100 " data-bs-ride="carousel">
         <div class="carousel-inner h-100">
 
+         {%  if films is  not empty %}
+        
         {% for film in films %}
 
-
+           
             <div class="carousel-item {{loop.first ? 'active' : ''}} h-100">
                 <div class="card mb-3 border-0 h-100" >
                     <div class="row g-0 h-100" >
@@ -27,6 +29,7 @@
 
             </div>
             {% endfor %}
+            
 
         </div>
     </div>
@@ -39,5 +42,9 @@
     <button  type="button" class="btn_carousel btn btn-light m-3 " data-bs-target="#header-carousel" data-bs-slide="next">
         Next
     </button>
+     
+         {% else %}
+         <div> {{message}} </div>
+         {% endif %}
 </div>
 </div>

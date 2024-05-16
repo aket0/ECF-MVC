@@ -24,40 +24,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $liste = array();
-
-        //récupération des roles dans un array
-        // for ($i = 0; $i < count($personnage); $i++) {
-        //     $liste[$i] = array($personnage[$i], $nom[$i], $prenom[$i]);
-        // }
-      
-               // echo $liste[0][1];
-        
-        // var_dump($roles);
-
-    $filmDao = new FilmDAO();
-    $acteurDao = new ActeurDAO();
-    //décalaration
-    $film = new Film(null,$titre,$realisateur,$affiche,$annee,$role);
-    //vérifier si le film existe
-    $film_exist=$filmDao::getOneByTitre($titre, $annee);
-    if(!empty($film_exist)){
+        $filmDao = new FilmDAO();
+        $acteurDao = new ActeurDAO();
+        //décalaration
+        $film = new Film(null,$titre,$realisateur,$affiche,$annee,$role);
+        //vérifier si le film existe
+        $film_exist=$filmDao::getOneByTitre($titre, $annee);
+        if(!empty($film_exist)){
         // var_dump($film_exist);
-        $message = "Le film existe déja sur la base de données";
+            $message = "Le film existe déja sur la base de données";
 
-    }
-    else{
+        }
+        else{
     
-        //création du film 
-
-        $id_film = $filmDao::addOneFilm($film);
-        $film->setId($id_film);
-        //boucler sur ma liste pour vérifier si l'acteur exixte ou pas 
-        for ($i = 0; $i < count($role); $i++) {{
-                $acteur=$acteurDao::getActeurByName($nom[$i],$annee[$i]);
+            //création du film 
+            $id_film = $filmDao::addOneFilm($film);
+            $film->setId($id_film);
+            //boucler sur ma liste pour vérifier si l'acteur exixte ou pas 
+            for ($i = 0; $i < count($role); $i++) {{
+                $acteur=$acteurDao::getActeurByName($nom[$i],$prenom[$i]);
     
                 if(empty($acteur)){
                    // echo $elements[0] ." ..".$elements[1];
-                    $acteur= new Acteur(null, $nom[$i],$annee[$i]);
+                    $acteur= new Acteur(null, $nom[$i],$prenom[$i]);
                     $id_acteur=$acteurDao::addOneActeur($acteur);
                     $acteur->setId($id_acteur);
                     $roles= new Role($acteur, $id_film ,random_int(50, 999),$role[$i]);
@@ -65,29 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
                 else{
                     
-                    $roles= new Role($acteur, $id_film ,random_int(50, 999),$elements[0]);
+                    $roles= new Role($acteur, $id_film ,random_int(50, 999),$role[$i]);
                     $test=$filmDao::addOneRole($roles);
                     // echo $test;
                 }
             }
-
-        // foreach ($liste as $elements) {
-        //     $acteur=$acteurDao::getActeurByName($elements[1],$elements[2]);
-
-        //     if(empty($acteur)){
-        //        // echo $elements[0] ." ..".$elements[1];
-        //         $acteur= new Acteur(null, $elements[1],$elements[2]);
-        //         $id_acteur=$acteurDao::addOneActeur($acteur);
-        //         $acteur->setId($id_acteur);
-        //         $role= new Role($acteur, $id_film ,random_int(50, 999),$elements[0]);
-        //         $test=$filmDao::addOneRole($role);
-        //     }
-        //     else{
-                
-        //         $role= new Role($acteur, $id_film ,random_int(50, 999),$elements[0]);
-        //         $test=$filmDao::addOneRole($role);
-        //         // echo $test;
-        //     }
 
             
         }
@@ -95,20 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $message="Votre film a été bien ajouter";
     }
-    //vérifier si l'acteur existe dans la table
-
-    
-   
-     
-
-   
-
-    
-
-   
-// 
+ 
 }
 }
+
+
 
 echo $twig->render('creer.html.twig', [
     'message' => $message

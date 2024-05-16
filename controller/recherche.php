@@ -23,7 +23,7 @@ if (isset($_POST['motCle'])) {
     
     
 }
-echo $twig->render('recherche.html.twig', [
+echo $twig->render('home.html.twig', [
     'films' => $films,
     'message' => $message
 ]);

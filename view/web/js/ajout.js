@@ -9,10 +9,10 @@ function removeInput() {
 //ajout d'un input
 function addInput(element, text) {
 
+    element.className = "col-md-3";
     element.type = "text";
     element.name = text + "[]";
     element.placeholder = text;
-    element.className = "col-md-3";
     element.required = true;
 }
 
@@ -32,7 +32,7 @@ function ajoutRole(event) {
     addInput(prenom, text_prenom);
 
     const btn = document.createElement("input");
-    btn.className = "col-md-2";
+    btn.className = "btn btn-primary";
     btn.type = "button";
     btn.value = "supprimer";
 

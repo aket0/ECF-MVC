@@ -18,9 +18,10 @@
 	
 	    </div>
     {% endif %}
+        <h2>Ajouter un film</h2>
         <div class="col">
             
-                <h2>Ajouter un film</h2>
+                
                 
                 <form action="creer" method="post" class="row g-3">
                     
@@ -54,16 +55,16 @@
                     </div>
                     <div class="col-md-12">
                         <label for="roles" class="form-label">Rôles</label>
-                        <input id="ajout" type="button" name="ajout" value="Ajouter" class="add">
+                        <input id="ajout" type="button" name="ajout" value="Ajouter" class="btn btn-primary">
                        
                     </div>
-                        <div id="role" class="col-md-12">
+                        <div id="role" >
                         <div class="col">
                             <input class="col-md-3" type="text" name="personnage[]" placeholder="Personnage" required>
                             <input class="col-md-3" type="text"  name="nom[]" placeholder="Nom" required>
                             <input class="col-md-3" type="text" name="prenom[]" placeholder="Prenom" required>
                         </div>
-                       
+                        
 
                     </div>
                     

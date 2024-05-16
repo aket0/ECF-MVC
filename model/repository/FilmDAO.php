@@ -122,7 +122,8 @@ class FilmDAO extends Dao
         $films = array();
         if ($query->rowCount() != 0) {
             while ($data = $query->fetch()) {
-                $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
+                $roles = self::getRolesByFilm($data['id']);
+                $films[] = new Film($data['id'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'],$roles);
             }
         }
 
