@@ -8,7 +8,7 @@ class UserDAO extends Dao
 {   
 
     
-    public static function getAll(): array
+    public static function getAll(string $recherche=""): array
     {
         $query = self::$bdd->prepare("SELECT id, username, email, mdp FROM user");
         $query->execute();

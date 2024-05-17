@@ -21,7 +21,7 @@ abstract class Dao
     }
 
     // Récupérer tous les éléments
-    abstract public static function getAll(): array;
+    abstract public static function getAll(string $recherche): array;
 
     // Récupérer plus d'informations sur un élément à l'aide de son ID
     abstract public static function getOne(int $id): ?object;

@@ -9,7 +9,7 @@ class ActeurDAO extends Dao
 {
 
     //Récupérer tous les acteurs
-    public static function getAll(): array
+    public static function getAll(string $recherche=""): array
     {
 
         $query = self::$bdd->prepare("SELECT id, nom, prenom FROM acteur");
